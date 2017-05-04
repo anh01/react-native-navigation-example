@@ -4,40 +4,69 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  TextInput
 } from 'react-native';
+import { NavigationActions } from 'react-navigation'
 
  export default class LoginScreen extends React.Component {
+   constructor(props) {
+    super(props);
+    this.state = { usernamePlaceholder: 'username',
+  passwordPlacehoder: 'password'};
+  }
   static navigationOptions = {
     title: 'Login',
   };
+
+  
+  _navigateTo = (routeName: string) => {
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName })]
+    })
+    this.props.navigation.dispatch(resetAction)
+  }
+
+
  render() {
+    const { navigate } = this.props.navigation;
+    
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
         
-        </Text>
+<TextInput
+        style={{height: 40, borderColor: 'red', borderWidth: 1, width:200}}
+        onChangeText={(textUsername) => this.setState({textUsername})}
+        placeholder={this.state.usernamePlaceholder}
+        value={this.state.textUsername}
+      />
 
-        <Text>
-          Kakakaka
-          </Text>
+      <TextInput
+        style={{height: 40, borderColor: 'red', borderWidth: 1, width:200, margin:20}}
+        onChangeText={(textPassword) => this.setState({textPassword})}
+        placeholder={this.state.passwordPlacehoder}
+        value={this.state.textPassword}
+        secureTextEntry={true}
+      />
 
 
-          <Button style={styles.btnlogin}
-          onPress={() =>{}}
+
+          <Button 
+          onPress={() =>{
+            this._navigateTo('Home')
+            
+          }}
+          color="#C9C9C9"
+          textAlign="center"
           title="Login"
+          width="0"
         />
-      </View>
+        </View>
+      
     );
   }
+
 }
 
 const styles = StyleSheet.create({
@@ -56,13 +85,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
-  },
-  btnlogin: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 20,
-       color: '#ff0000',
-     padding: 50,
-
   }
 });

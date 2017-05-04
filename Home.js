@@ -3,23 +3,25 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Button,
+  Image
 } from 'react-native';
 
- export default class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Home',
-  };
- render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-         Hello Home
-        </Text>
-      </View>
-    );
-  }
-}
+import { DrawerNavigator } from 'react-navigation';
+import ProfileScreen from './Profile'
+import NotificationsScreen from './Notifications'
+import { StackNavigator } from 'react-navigation';
+
+
+ export default HomeScreen = DrawerNavigator({
+  Profile: {
+    screen: ProfileScreen,
+  },
+  Notifications: {
+    screen: NotificationsScreen,
+  },
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -37,5 +39,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+  },
+   icon: {
+    width: 24,
+    height: 24,
   },
 });
