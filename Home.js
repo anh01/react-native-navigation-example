@@ -5,7 +5,8 @@ import {
   Text,
   View,
   Button,
-  Image
+  Image,
+  TouchableHighlight
 } from 'react-native';
 
 import { DrawerNavigator } from 'react-navigation';
@@ -16,10 +17,10 @@ import { StackNavigator } from 'react-navigation';
 
  export default HomeScreen = DrawerNavigator({
   Profile: {
-    screen: ProfileScreen,
+    screen: ProfileScreen
   },
   Notifications: {
-    screen: NotificationsScreen,
+    screen: NotificationsScreen
   },
 });
 

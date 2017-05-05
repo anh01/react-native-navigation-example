@@ -6,11 +6,12 @@ import {
   Text,
   View,
   Button,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native';
 
 export default class NotificationsScreen extends React.Component {
-  static navigationOptions = {
+  static navigationOptions =  ({ navigation, screenProps }) => ({
     drawerLabel: 'Notifications',
     /*drawerIcon: ({ tintColor }) => (
       <Image
@@ -19,7 +20,14 @@ export default class NotificationsScreen extends React.Component {
       />
     ),*/
     title: 'Notifications',
-  };
+    headerLeft:  
+   
+                <TouchableOpacity onPress={()=> navigation.navigate('DrawerOpen')}>
+                       <Image source={require('./res/menu.png')} 
+                       style={{ height: 25}}
+                       resizeMode={'center'}/>
+                </TouchableOpacity>
+  });
 
   render() {
     return (

@@ -5,20 +5,24 @@ import {
   Text,
   View,
   Button,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native';
 
 export default class ProfileScreen extends React.Component {
-  static navigationOptions = {
-    drawerLabel: 'Profile',
-    /*drawerIcon: ({ tintColor }) => (
-      <Image
-        source={require('./chats-icon.png')}
-        style={[styles.icon, {tintColor: tintColor}]}
-      />
-    ),*/
-    title: 'Profile'
-  };
+
+  static navigationOptions = ({ navigation, screenProps }) => ({
+    title:  "Profile",
+    headerLeft:  
+   
+                <TouchableOpacity onPress={()=> navigation.navigate('DrawerOpen')}>
+                       <Image source={require('./res/menu.png')} 
+                       style={{ height: 25}}
+                       resizeMode={'center'}/>
+                </TouchableOpacity>
+    
+           
+  });
 
   render() {
     return (
@@ -28,4 +32,5 @@ export default class ProfileScreen extends React.Component {
       />
     );
   }
+  
 }
